@@ -70,9 +70,12 @@ print("Download concluído!")
 ---
 
 ## Ambiente de Desenvolvimento
-Plataforma: Azure Machine Learning
-Workspace: mlw-paola
-Notebook: eda-vendas.ipynb
+
+- Plataforma: Azure Machine Learning
+
+- Workspace: mlw-paola
+
+- Notebook: eda-vendas.ipynb
 
 ## Etapas da Análise
 
