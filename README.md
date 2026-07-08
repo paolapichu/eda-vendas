@@ -67,79 +67,97 @@ with open("arquivo.csv", "wb") as f:
 
 print("Download concluído!")
 
-Ambiente de Desenvolvimento
+---
+
+## Ambiente de Desenvolvimento
 Plataforma: Azure Machine Learning
 Workspace: mlw-paola
 Notebook: eda-vendas.ipynb
 
-Etapas da Análise
-1. Carregamento dos dados
+## Etapas da Análise
+
+### Carregamento dos dados
 import pandas as pd
 
 df = pd.read_csv('data/vendas.csv', encoding='latin1')
 df.head()
 
-Entendimento da base
+### Entendimento da base
 df.info()
+
 df.describe()
+
 df.columns
 
-Análises realizadas:
+### Análises realizadas:
 
-Tipos de dados
-Valores nulos
-Estrutura das colunas
-Estatísticas descritivas
+- Tipos de dados
+- Valores nulos
+- Estrutura das colunas
+- Estatísticas descritivas
 
-Tratamento de dados
+## Tratamento de dados
 
 Verificação de valores nulos:
 
 df.isnull().sum()
 
-Conversão de datas:
+## Conversão de datas
 
 df['ORDERDATE'] = pd.to_datetime(df['ORDERDATE'])
 
-Análises exploratórias
-Faturamento total
+### Análises exploratórias
+
+- Faturamento total
+
 df['SALES'].sum()
 
-Vendas por ano
+- Vendas por ano
+
 df.groupby('YEAR_ID')['SALES'].sum()
 
-Vendas por mês
+- Vendas por mês
+
 df.groupby('MONTH_ID')['SALES'].sum().sort_values(ascending=False)
 
-Vendas por país
+- Vendas por país
+
 df.groupby('COUNTRY')['SALES'].sum().sort_values(ascending=False)
 
-Top 10 clientes
+- Top 10 clientes
+
 df.groupby('CUSTOMERNAME')['SALES'].sum().sort_values(ascending=False).head(10)
 
-Produtos mais vendidos
+- Produtos mais vendidos
+
 df.groupby('PRODUCTLINE')['SALES'].sum().sort_values(ascending=False)
 
-Criação de métricas
-Ticket médio
+###  Criação de métricas
+
+- Ticket médio
+
 df["TICKET_MEDIO"] = df["SALES"] / df["QUANTITYORDERED"]
+
 df["TICKET_MEDIO"].mean()
 
-Visualizações
-Vendas por ano
+## Visualizações
+
+- Vendas por ano
+
 import matplotlib.pyplot as plt
 
 df.groupby('YEAR_ID')['SALES'].sum().plot()
 plt.show()
 
-Vendas por mês
+- Vendas por mês
+
 df.groupby("MONTH_ID")["SALES"].sum().plot(kind="line")
 plt.title("Vendas por Mês")
 plt.show()
 
-Principais Insights
-Identificação dos países com maior volume de vendas
-Descoberta das linhas de produtos mais lucrativas
-Análise da sazonalidade das vendas ao longo dos meses
-Identificação dos principais clientes (maior receita)
-Cálculo do ticket médio por pedido
+## Principais Insights
+- Identificação dos países com maior volume de vendas
+- Descoberta das linhas de produtos mais lucrativas
+- Análise da sazonalidade das vendas ao longo dos meses
+- Identificação dos principais clientes (maior receita)
+- Cálculo do ticket médio por pedido
